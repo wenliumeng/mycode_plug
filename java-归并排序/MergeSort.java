@@ -22,7 +22,7 @@ public class MergeSort {
         System.out.println("m="+m);
         System.out.println("t="+t);
 
-        int[] tmp = new int[t - s + 1];
+        int[] tmp = new int[t - s + 1];//得到需调整字符串的长度
         int i = s, j = m, k = 0;
         while (i < m && j <= t) {
             if (a[i] <= a[j]) {
@@ -45,7 +45,7 @@ public class MergeSort {
             j++;
             k++;
         }
-        System.arraycopy(tmp, 0, a, s, tmp.length);
+        System.arraycopy(tmp, 0, a, s, tmp.length);//源数组，开始，目标数组，目标数组开始位置，复制的长度
         for(int ii = 0; ii < a.length; ii++) {
             System.out.print(a[ii] + " ");
         }
