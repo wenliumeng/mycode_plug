@@ -3,7 +3,8 @@
 #define ERROR 0
 #include<stdio.h>
 #include<malloc.h>
-#include<stlib.h>
+#include<stdlib.h>
+#include<math.h>
 
 typedef int QElemType;
 
@@ -19,7 +20,7 @@ typedef struct LinkQueue {
 	QueuePtr front, rear;
 }LinkQueue;
 
-//Èë¶Ó²Ù×÷
+//ÃˆÃ«Â¶Ã“Â²Ã™Ã—Ã·
 Statue EnQueue(LinkQueue *Q, QElemType e)
 {
 	QueuePtr s = (QueuePtr)malloc(sizeof(QNode));
@@ -32,7 +33,7 @@ Statue EnQueue(LinkQueue *Q, QElemType e)
 	return OK;
 }
 
-//³ö¶Ó²Ù×÷
+//Â³Ã¶Â¶Ã“Â²Ã™Ã—Ã·
 Statue OuQueue(LinkQueue *Q, QElemType *e)
 {
 	QueuePtr p;
