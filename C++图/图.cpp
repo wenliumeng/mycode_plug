@@ -1,43 +1,43 @@
 #include<stdio.h>
 #include<malloc.h>
-typedef char VertexType;        //¶¥µãÀàĞÍ
-typedef int EdgeType;           //±ßÉÏµÄÈ¨Öµ
+typedef char VertexType;        //é¡¶ç‚¹ç±»å‹
+typedef int EdgeType;           //è¾¹ä¸Šçš„æƒå€¼
 #define MAXVEX 100
 #define INFINITY 65535
 
-typedef struct VertexNode       //¶¥µã±í½áµã
+typedef struct EdgeNode {       //è¾¹è¡¨èŠ‚ç‚¹
+	int adjvex;                 //é‚»æ¥ç‚¹åŸŸï¼Œå­˜å‚¨è¯¥é¡¶ç‚¹å¯¹åº”çš„ä¸‹æ ‡
+	EdgeType wight;			    //å‚¨å­˜æƒå€¼
+	struct EdgeNode *next;      //é“¾åŸŸï¼ŒæŒ‡å‘ä¸‹ä¸€ä¸ªé‚»æ¥ç‚¹
+}EdgeNode;
+
+typedef struct VertexNode       //é¡¶ç‚¹è¡¨ç»“ç‚¹
 {
 	VertexType data;
 	EdgeNode *firstnode;
 }VertexNode, AdjList[MAXVEX];
 
-typedef struct EdgeNode {       //±ß±í½Úµã
-	int adjvex;                 //ÁÚ½ÓµãÓò£¬´æ´¢¸Ã¶¥µã¶ÔÓ¦µÄÏÂ±ê
-	EdgeType wight;			    //´¢´æÈ¨Öµ
-	struct EdgeNode *next;      //Á´Óò£¬Ö¸ÏòÏÂÒ»¸öÁÚ½Óµã
-}EdgeNode;
-
 typedef struct
 {
-	AdjList adjList;             //±í¶¥µã
-	int numVertexes, numEdges;   //Í¼ÖĞµ±Ç°¶¥µãÊıºÍ±ßÊı
+	AdjList adjList;             //è¡¨é¡¶ç‚¹
+	int numVertexes, numEdges;   //å›¾ä¸­å½“å‰é¡¶ç‚¹æ•°å’Œè¾¹æ•°
 }GraphAdjList;
 
 void CreateALGraph(GraphAdjList *G)
 {
 	int i, j, k;
 	EdgeNode *e;
-	printf("ÇëÊäÈë¶¥µãÊıºÍ±ßÊı£º\n");
-	scanf("%d,%d",&G->numVertexes,&G->numEdges);
+	printf("è¯·è¾“å…¥é¡¶ç‚¹æ•°å’Œè¾¹æ•°ï¼š\n");
+	scanf_s("%d,%d",&G->numVertexes,&G->numEdges);
 	for (i = 0; i < G->numVertexes; i++) {
-		scanf(&G->adjList[i].data);                 //ÊäÈë¶¥µãĞÅÏ¢
+		scanf(&G->adjList[i].data);                 //è¾“å…¥é¡¶ç‚¹ä¿¡æ¯
 		G->adjList[i].firstnode = NULL;
 	}
 
 	for (k = 0; k < G->numEdges; k++) {
-		printf("ÊäÈë±ß£¨vi,vj£©ÉÏµÄ¶¥µãĞòºÅ£º\n");
-		scanf("%d,%d",&i,&j);
-		/* Í·²å·¨¿ªÊ¼ */
+		printf("è¾“å…¥è¾¹ï¼ˆvi,vjï¼‰ä¸Šçš„é¡¶ç‚¹åºå·ï¼š\n");
+		scanf_s("%d,%d",&i,&j);
+		/* å¤´æ’æ³•å¼€å§‹ */
 		e = (EdgeNode*)malloc(sizeof(EdgeNode));
 		
 		e->adjvex = j;
@@ -49,6 +49,6 @@ void CreateALGraph(GraphAdjList *G)
 		e->adjvex = i;
 		e->next = G->adjList[i].firstnode;
 		G->adjList[j].firstnode = e;
-		/* Í·²å·¨½áÊø */
+		/* å¤´æ’æ³•ç»“æŸ */
 	}
 }
