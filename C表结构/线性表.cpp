@@ -29,7 +29,7 @@ Status ListInsert(SqList *L,int i, ElemType p)
 		return ERROR;
 	if (i < L->length)
 	{
-		for (k = L->length - 1; k >= i - 1; k--)
+		for (k = L->length - 1; k >= i - 1; k--)   /* 这个地方k一定要是--要不没办法赋值，相互覆盖 */
 			L->data[k + 1] = L->data[k];
 	}
 	L->data[i - 1] = p;
