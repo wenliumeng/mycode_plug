@@ -8,7 +8,7 @@ typedef struct
 }SqList;
 
 void InsertSort(SqList *L);
-
+void ShellSort(SqList *L);
 void main() {
 
 	SqList* L = new SqList;
@@ -24,14 +24,15 @@ void main() {
 		printf("%d,", L->r[i]);
 	}
 	printf("\n");
-	InsertSort(L);
+	//InsertSort(L);
+	ShellSort(L);
 	for (int i = 0; i < L->length; i++) {
 		printf("%d,", L->r[i]);
 	}
 	getchar();
 }
 
-//²åÈëÅÅĞò
+//ç›´æ¥æ’å…¥
 void InsertSort(SqList *L) {
 	int i, j;
 	for (i = 2; i < L->length; i++) {
@@ -49,4 +50,21 @@ void InsertSort(SqList *L) {
 		}
 		printf("\n");
 	}
+}
+
+void ShellSort(SqList *L) {
+	int i, j;
+	int increment = L->length;
+	do {
+		increment = increment / 3 + 1;
+		for (i = increment + 1; i < L->length; i++) {
+			if (L->r[i] < L->r[i - increment]) {
+				L->r[0] = L->r[i];
+				for (j = i - increment; L->r[j] > L->r[0] && j>0; j = j - increment) {
+					L->r[j + increment] = L->r[j];
+				}
+				L->r[j + increment] = L->r[0];
+			}
+		}
+	} while (increment > 1);
 }
