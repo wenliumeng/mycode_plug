@@ -11,6 +11,19 @@ void InsertSort(SqList *L);
 void ShellSort(SqList *L);
 void main() {
 
+	SqList* l = new SqList;
+	l->r[0] = { 0 };
+	l->r[1] = { 9 };
+	l->r[2] = { 1 };
+	l->r[3] = { 5 };
+	l->r[4] = { 8 };
+	l->r[5] = { 3 };
+	l->r[6] = { 7 };
+	l->r[7] = { 4 };
+	l->r[8] = { 6 };
+	l->r[9] = { 2 };
+	l->length = 10;
+
 	SqList* L = new SqList;
 	L->r[0] = {0};
 	L->r[1] = {5};
