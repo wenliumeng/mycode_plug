@@ -65,6 +65,25 @@ void InsertSort(SqList *L) {
 	}
 }
 
+//掌握第二个循环一定是j--，因为是从右往左逐次移动
+//0 4 3 2 1
+//0 3 4 2 1 
+//len = 4
+/*
+void insertSort(SqLists *l) {
+	for (int i = 0; i < l->len-1;i++) {
+		if (l->l[i+2] < l->l[i+1]) {
+			l->l[0] = l->l[i + 2];
+			int j;
+			for (j = i;l->l[j+1] > l->l[0] ;j--) {
+				l->l[j + 2] = l->l[j + 1];
+			}
+			l->l[j + 2] = l->l[0];
+		}
+	}
+}
+*/
+
 void ShellSort(SqList *L) {
 	int i, j;
 	int increment = L->length;
